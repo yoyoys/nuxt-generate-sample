@@ -1,22 +1,37 @@
-# test-nuxt
+# Nuxt Generate static site sample
 
-> My dazzling Nuxt.js project
+## DIY Steps
 
+1. initialize project
+```bash
+npx create-nuxt-app test-nuxt
+```
+
+2. install these package for cross-platform files.
+```bash
+npm i -D copyfiles rimraf
+```
+
+3. Edit npm script
+```diff
+scripts: {
+  ...
++ "build-docs": "rimraf docs && npm run generate && copyfiles --up 1 \"dist/**/*\" \"docs/\"",
+  ...
+}
+
+```
+
+4. Run build setup below.
 ## Build Setup
 
 ``` bash
-# install dependencies
-$ npm install
+# install dependencies.
+$ npm ci
 
-# serve with hot reload at localhost:3000
-$ npm run dev
+# generate static project.
+$ npm run build-docs
 
-# build for production and launch server
-$ npm run build
-$ npm run start
-
-# generate static project
-$ npm run generate
+# serve and test your project.
+$ npx serve docs/
 ```
-
-For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org).
